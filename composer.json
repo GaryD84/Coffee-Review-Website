@@ -1,0 +1,19 @@
+{
+
+    "autoload": {
+    "psr-4": {
+        "Tudublin\\": "src"
+    }
+},
+
+
+
+
+    "require": {
+        "mattsmithdev/pdo-crud-for-free-repositories": "^1.1",
+        "fzaninotto/faker": "^1.9",
+        "symfony/dotenv": "^5.0",
+        "codeception/codeception": "^4.1",
+        "twig/twig": "^3.0"
+    }
+}

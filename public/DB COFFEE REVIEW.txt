@@ -1,0 +1,29 @@
+
+
+*** SQL DB TABLE***
+use coffeereview;
+
+CREATE TABLE coffeeshop(
+
+id int primary key,
+
+
+   coffeeshop1 int,
+   title varchar(45) NOT NULL,
+   category varchar(45) NOT NULL,
+   price float(5) NOT NULL,
+   voteTotal varchar(45) NOT NULL,
+   numVotes varchar(45) NOT NULL,
+   coffeereview varchar(45) NOT NULL, 
+   coffee DATE
+);
+
+/*INSERT INTO coffeeshop (courseinfoID1, titleName, categoryName, price, votetotal, coffeereview) 
+VALUES ('North Star', 'Americano', '2.20', '5', '1', '2020-05-10')*/
+
+update `numVotes`.`coffeereview` set `Administrator`='1' where `coffeeshop1`=1;
+
+
+
+N.B. - All other tables are inserted vis php code. tables to include:
+USER, STAFF, SITEADMINISTRATORS, MEMBERSOFTHEPUBLIC, COMMENT, COFFEESHOPOWNERS, COFFEESHOP, COFFEEREVIEW

@@ -1,0 +1,4 @@
+coffee logo image was created by myself in microsoft paint.
+
+other images such as the "stars" where pulled from Dr. Matt Smiths evote webite on Github.
+github url: https://github.com/dr-matt-smith/evote-movie-2020.git - 10:32 PM 5/16/2020
