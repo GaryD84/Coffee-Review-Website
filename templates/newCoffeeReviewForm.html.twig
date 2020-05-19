@@ -1,0 +1,54 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}new CoffeeReview{% endblock %}
+
+{% block main %}
+
+    {% set title = "" %}
+    {% set category = "" %}
+    {% set price = "" %}
+
+    {% if CoffeeReview is defined %}
+        {% set title = CoffeeReview.title %}
+        {% set category = CoffeeReview.category %}
+        {% set price = CoffeeReview.price %}
+    {% endif %}
+
+
+    {% if errors|length > 0%}
+        <div  class="error">
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <h1>
+        New CoffeeReview
+    </h1>
+
+    <form action="/" method="post">
+        <input type="hidden" name="action" value="processNewCoffeeReview">
+        <p>
+            Title:
+            <label>
+                <input name="title" value="{{ title }}">
+            </label>
+        <p>
+            CategoryId:
+            <label>
+                <input name="categoryId" value="{{ categoryId }}">
+            </label>
+        <p>
+            Price:
+            <label>
+                <input name="price" value="{{ price }}">
+            </label>
+        <p>
+            <input type="submit">
+
+    </form>
+
+{% endblock %}

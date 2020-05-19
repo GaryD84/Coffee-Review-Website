@@ -1,0 +1,103 @@
+{% extends '_base.html.twig' %}
+
+{% block listLinkStyle %}current_page{% endblock %}
+
+{% block title %}Coffee Shop Ratings{% endblock %}
+
+{% block main %}
+
+    <!-- start table for displaying coffee review details-->
+
+<h2>Coffee Shop Review List & average votes</h2>
+
+<table>
+    <tr>
+        <th> ID </th>
+        <th> title </th>
+        <th> category </th>
+        <th> price </th>
+        <th> vote average </th>
+        <th> num votes </th>
+        <th> stars </th>
+
+
+        {% if session.username is defined %}
+        <th> (EDIT) </th>
+        <th> (DELETE)  </th>
+        {% endif %}
+    </tr>
+    
+    {% for coffeereview in coffeereview %}
+    <tr>
+        <td>{{ .ID }}</td>
+        <td>{{ CoffeeReview.title }}</td>
+        <td>
+            {{ CoffeeReview.category.name }}
+            <br>
+            <small>{{ CoffeeReview.category.description }}</small>
+        </td>
+        <td>&euro; {{ CoffeeReview.price | number_format(2, '.', ',') }}</td>
+        <td>{{ CoffeeReview.voteAverage }} %</td>
+        <td>{{ CoffeeReview.numVotes }}</td>
+        <td>
+                    {% if CoffeeReview.numVotes > 0 %}
+                        <img src="images/{{ starsHalf }}" alt="star image for percent">
+                    {% else %}
+                        (no votes yet)
+                    {% endif %}
+                </td>
+        {% if session.username is defined %}
+        <td>
+            <a href="/index.php?action=editCoffeeReview&id={{ CoffeeReview.id }}">
+                EDIT
+
+            </a>
+
+        </td>
+        <td>
+            <a href="/index.php?action=deleteCoffeeReview&id={{ CoffeeReview.id }}">
+                DELETE
+            </a>
+        </td>
+        {% endif %}
+
+
+            </tr>
+            {% endfor %}
+    
+        </table>
+
+    {% if session.username is defined %}
+    <a href="/index.php?action=newCoffeeReviewForm">CREATE a new CoffeeReview</a>
+
+    {% endif %}
+
+    <form method="post" action="/"  id="commentForm">
+        <h2>Add a comment:</h2>
+        <input type="hidden" name="action" value="processComment">
+        <label>
+<textarea name="comment" cols="75" rows="5"></textarea >
+</label>
+        <input type="submit">
+    </form>
+
+    {% if comments|length > 0 %}
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    {{ comment.comment }}
+                    {% if comment.userId %}
+                        (posted by <b>{{ comment.user.username }}</b>)
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+
+{% endblock %}
+
+
+    

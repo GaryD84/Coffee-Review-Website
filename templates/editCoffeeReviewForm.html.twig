@@ -1,0 +1,47 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}new movie{% endblock %}
+
+{% block main %}
+    <h1>
+        EDIT Coffee Review
+    </h1>
+
+    <form action="/" method="post">
+        <input type="hidden" name="action" value="processEditCoffeeReview">
+
+        <p>
+            Id:
+            <label>
+                <input name="id" value="{{ CoffeeReview.id }}" readonly>
+            </label>
+        <p>
+            Title:
+            <label>
+                <input name="title" value="{{ CoffeeReview.title }}">
+            </label>
+        <p>
+            Category:
+            <label>
+                <input name="category" value="{{ CoffeeReview.categoryId }}">
+            </label>
+        <p>
+            Price:
+            <label>
+                <input name="price" value="{{ CoffeeReview.price }}">
+            </label>
+        <p>
+            Total votes:
+            <label>
+                <input name="voteTotal" value="{{ CoffeeReview.voteTotal }}">
+            </label>
+        <p>
+            Num votes:
+            <label>
+                <input name="numVotes" value="{{ CoffeeReview.numVotes }}">
+            </label>
+        <p>
+            <input type="submit">
+    </form>
+
+{% endblock %}
